@@ -33,10 +33,9 @@
   },
 
   "storage": {
-    "type": "memcached",
-    "host": "127.0.0.1",
-    "port": 11211,
-    "expire": 2592000
+    "type": "gcp_storage",
+    "path": "data",
+    "bucket": "hastebin-mingweisamuel.appspot.com"
   },
 
   "documents": {
