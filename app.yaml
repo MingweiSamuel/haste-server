@@ -1,2 +1,7 @@
 runtime: nodejs8
 env: standard
+
+handlers:
+- url: /.*
+  script: IGNORED
+  secure: always
