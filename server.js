@@ -62,8 +62,13 @@ if (config.recompressStaticAssets) {
       var dest = item.substring(0, item.length - 3) + '.min' + item.substring(item.length - 3);
       var orig_code = fs.readFileSync('./static/' + item, 'utf8');
 
-      fs.writeFileSync('./static/' + dest, uglify.minify(orig_code).code, 'utf8');
-      winston.info('compressed ' + item + ' into ' + dest);
+      try {
+        fs.writeFileSync('./static/' + dest, uglify.minify(orig_code).code, 'utf8');
+        winston.info('compressed ' + item + ' into ' + dest);
+      }
+      catch (e) {
+        winston.warn('failed to compress ' + item + ' into ' + dest + ': ' + e.message);
+      }
     }
   }
 }
